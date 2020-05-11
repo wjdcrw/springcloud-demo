@@ -8,15 +8,22 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <description>基于ribbon负载均衡</description>
+    <artifactId>ribbon-product</artifactId>
 
-    <artifactId>customlb-order</artifactId>
     <properties>
         <java.version>${java.version}</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-nacos-discovery</artifactId>
         </dependency>
 
         <dependency>
@@ -25,28 +32,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-nacos-discovery</artifactId>
-        </dependency>
-
-        <!-- 加入ribbon -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring‐cloud‐starter‐netflix‐ribbon</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>21.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>cn.dcr.proj</groupId>
             <artifactId>dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -57,5 +46,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

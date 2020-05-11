@@ -9,6 +9,9 @@
     <file url="file://$PROJECT_DIR$/customlb-product" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dao" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dao/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ribbon-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ribbon-product" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/riddon-pay" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

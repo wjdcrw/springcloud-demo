@@ -11,6 +11,9 @@
         <module name="customlb-order" />
         <module name="customlb-product" />
         <module name="dao" />
+        <module name="ribbon-order" />
+        <module name="ribbon-product" />
+        <module name="riddon-pay" />
       </profile>
     </annotationProcessing>
   </component>
@@ -20,6 +23,9 @@
       <module name="customlb-order" options="-parameters" />
       <module name="customlb-product" options="-parameters" />
       <module name="dao" options="-parameters" />
+      <module name="ribbon-order" options="-parameters" />
+      <module name="ribbon-product" options="-parameters" />
+      <module name="riddon-pay" options="-parameters" />
     </option>
   </component>
 </project>

@@ -13,6 +13,7 @@ public class WebConfig {
 
     @Bean
     public RestTemplate restTemplate(DiscoveryClient discoveryClient) {
-        return new TulingRestTemplate(discoveryClient);
+        return new MyRestTemplate(discoveryClient);
     }
+
 }

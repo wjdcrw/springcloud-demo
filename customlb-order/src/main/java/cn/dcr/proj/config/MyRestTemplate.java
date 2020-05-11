@@ -6,7 +6,6 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.web.client.*;
 
@@ -18,64 +17,51 @@ import java.util.Random;
 
 /**
  * 根据RestTemplate特性自己改造
- * Created by smlz on 2019/11/19.
  */
 @Slf4j
-public class TulingRestTemplate extends RestTemplate {
-
+public class MyRestTemplate extends RestTemplate {
     private DiscoveryClient discoveryClient;
-
-    public TulingRestTemplate (DiscoveryClient discoveryClient) {
-        this.discoveryClient = discoveryClient;
+    public MyRestTemplate(DiscoveryClient discoveryClient) {
+        this.discoveryClient=discoveryClient;
     }
 
-    protected <T> T doExecute(URI url, @Nullable HttpMethod method, @Nullable RequestCallback requestCallback,
-                              @Nullable ResponseExtractor<T> responseExtractor) throws RestClientException {
+    @Override
+    protected <T> T doExecute(URI url, HttpMethod method, RequestCallback requestCallback, ResponseExtractor<T> responseExtractor) throws RestClientException {
 
         Assert.notNull(url, "URI is required");
         Assert.notNull(method, "HttpMethod is required");
         ClientHttpResponse response = null;
+        log.info("请求url路径为{}",url);
+        //把服务名替换成自己的IP
+        url=replaceUrl(url);
+        log.info("替换后url路径为{}",url);
         try {
-
-            log.info("请求的url路径为:{}",url);
-            //把服务名 替换成我们的IP
-            url = replaceUrl(url);
-
-            log.info("替换后的路径:{}",url);
-
-            ClientHttpRequest request = createRequest(url, method);
+            ClientHttpRequest request=createRequest(url,method);
             if (requestCallback != null) {
                 requestCallback.doWithRequest(request);
             }
-            response = request.execute();
-            handleResponse(url, method, response);
+            response=request.execute();
+            handleResponse(url,method,response);
             return (responseExtractor != null ? responseExtractor.extractData(response) : null);
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             String resource = url.toString();
             String query = url.getRawQuery();
             resource = (query != null ? resource.substring(0, resource.indexOf('?')) : resource);
             throw new ResourceAccessException("I/O error on " + method.name() +
                     " request for \"" + resource + "\": " + ex.getMessage(), ex);
-        } finally {
+        }finally {
             if (response != null) {
                 response.close();
             }
         }
     }
 
-
     /**
      * 方法实现说明:把微服务名称  去注册中心拉取对应IP进行调用
-     * http://product-center/selectProductInfoById/1
-     * @author:smlz
-     * @param url:请求的url
-     * @return:
-     * @exception:
-     * @date:2020/2/6 13:11
+     * @param url：请求的url
+     * @return
      */
     private URI replaceUrl(URI url){
-
         //1:从URI中解析调用的调用的serviceName=product-center
         String serviceName = url.getHost();
         log.info("调用微服务的名称:{}",serviceName);
@@ -90,35 +76,28 @@ public class TulingRestTemplate extends RestTemplate {
         if(serviceInstanceList.isEmpty()) {
             throw new RuntimeException("没有可用的微服务实例列表:"+serviceName);
         }
-
-        String serviceIp = chooseTargetIp(serviceInstanceList);
-
-        String source = serviceIp+reqPath;
+        String serviceIp=chooseTargetIp(serviceInstanceList);
+        String source=serviceIp+reqPath;
         try {
             return new URI(source);
         } catch (URISyntaxException e) {
             log.error("根据source:{}构建URI异常",source);
         }
         return url;
+
     }
 
     /**
      * 方法实现说明:从服务列表中 随机选举一个ip
-     * @author:smlz
-     * @param serviceInstanceList 服务列表
-     * @return: 调用的ip
-     * @exception:
-     * @date:2020/2/6 13:15
+     * @param serviceInstanceList
+     * @return
      */
-    private String chooseTargetIp(List<ServiceInstance> serviceInstanceList) {
+    private String chooseTargetIp(List<ServiceInstance> serviceInstanceList){
         //采取随机的获取一个
-        Random random = new Random();
-        Integer randomIndex = random.nextInt(serviceInstanceList.size());
-        String serviceIp = serviceInstanceList.get(randomIndex).getUri().toString();
+        Random random=new Random();
+        Integer randomIndex=random.nextInt(serviceInstanceList.size());
+        String serviceIp=serviceInstanceList.get(randomIndex).getUri().toString();
         log.info("随机选举的服务IP:{}",serviceIp);
         return serviceIp;
     }
-
-
-
 }
