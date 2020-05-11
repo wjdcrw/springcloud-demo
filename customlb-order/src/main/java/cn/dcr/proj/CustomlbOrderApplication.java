@@ -2,12 +2,14 @@ package cn.dcr.proj;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-public class CoustomlbOrderApplication {
+@EnableDiscoveryClient
+public class CustomlbOrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CoustomlbOrderApplication.class, args);
+        SpringApplication.run(CustomlbOrderApplication.class, args);
     }
 
 }

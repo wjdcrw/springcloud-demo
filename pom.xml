@@ -15,7 +15,8 @@
   <modules>
     <module>common</module>
     <module>dao</module>
-    <module>coustomlb-order</module>
+    <module>customlb-order</module>
+    <module>customlb-product</module>
   </modules>
   <packaging>pom</packaging>
 

@@ -8,7 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
-        <module name="coustomlb-order" />
+        <module name="customlb-order" />
+        <module name="customlb-product" />
         <module name="dao" />
       </profile>
     </annotationProcessing>
@@ -16,7 +17,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="-parameters" />
-      <module name="coustomlb-order" options="-parameters" />
+      <module name="customlb-order" options="-parameters" />
+      <module name="customlb-product" options="-parameters" />
       <module name="dao" options="-parameters" />
     </option>
   </component>
