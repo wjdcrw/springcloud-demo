@@ -11,6 +11,9 @@
 
     <artifactId>dao</artifactId>
 
+    <properties>
+        <java.version>${java.version}</java.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

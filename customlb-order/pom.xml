@@ -29,11 +29,7 @@
             <artifactId>spring-cloud-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!-- 加入ribbon -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring‐cloud‐starter‐netflix‐ribbon</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>com.google.guava</groupId>
