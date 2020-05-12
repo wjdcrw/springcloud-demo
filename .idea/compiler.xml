@@ -7,15 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ribbon-order" />
         <module name="common" />
+        <module name="ribbon-product" />
+        <module name="dao" />
+        <module name="ribbon-custom-order" />
         <module name="customlb-order" />
         <module name="customlb-product" />
-        <module name="dao" />
-        <module name="ribbon-order" />
-        <module name="ribbon-product" />
         <module name="riddon-pay" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="8" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -23,6 +25,7 @@
       <module name="customlb-order" options="-parameters" />
       <module name="customlb-product" options="-parameters" />
       <module name="dao" options="-parameters" />
+      <module name="ribbon-custom-order" options="-parameters" />
       <module name="ribbon-order" options="-parameters" />
       <module name="ribbon-product" options="-parameters" />
       <module name="riddon-pay" options="-parameters" />

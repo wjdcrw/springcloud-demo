@@ -11,7 +11,9 @@
     <description>ribbon的负载均衡</description>
     <artifactId>ribbon-order</artifactId>
 
-
+    <properties>
+        <java.version>${java.version}</java.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -27,7 +29,11 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-alibaba-nacos-discovery</artifactId>
         </dependency>
-
+        <!--加入ribbon-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

@@ -33,9 +33,8 @@
         <!-- 加入ribbon -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring‐cloud‐starter‐netflix‐ribbon</artifactId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

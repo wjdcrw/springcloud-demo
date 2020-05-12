@@ -17,9 +17,10 @@
     <module>dao</module>
     <module>customlb-order</module>
     <module>customlb-product</module>
-      <module>ribbon-order</module>
-      <module>ribbon-product</module>
+    <module>ribbon-order</module>
+    <module>ribbon-product</module>
     <module>riddon-pay</module>
+    <module>ribbon-custom-order</module>
   </modules>
   <packaging>pom</packaging>
 

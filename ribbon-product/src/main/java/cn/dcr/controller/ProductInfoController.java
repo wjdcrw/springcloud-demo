@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @Slf4j
 public class ProductInfoController {
     @Value("server.port")
-    private Integer port;
+    private String port;
     @Autowired
     private ProductInfoMapper productInfoMapper;
 
