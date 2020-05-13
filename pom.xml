@@ -21,6 +21,9 @@
     <module>ribbon-product</module>
     <module>riddon-pay</module>
     <module>ribbon-custom-order</module>
+    <module>feign-api</module>
+    <module>feign-order</module>
+    <module>feign-product</module>
   </modules>
   <packaging>pom</packaging>
 
