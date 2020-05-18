@@ -24,6 +24,9 @@
     <module>feign-api</module>
     <module>feign-order</module>
     <module>feign-product</module>
+    <module>sentinel-helloworld</module>
+    <module>sentinel-order</module>
+    <module>sentinel-product</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -33,6 +36,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+
+  </dependencies>
   <!-- 子模块继承后，提供作用：锁定版本+子moudle不用写groupid和version -->
   <dependencyManagement>
     <dependencies>
