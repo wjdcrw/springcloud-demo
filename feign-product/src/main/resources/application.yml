@@ -22,7 +22,7 @@ spring:
         useGlobalDataSourceStat: true
         connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
   application:
-    name: product-center
+    name: productcenter
   cloud:
     nacos:
       discovery:

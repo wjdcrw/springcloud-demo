@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Param []
  * @return java.util.List<java.util.Map < java.lang.String, java.lang.Object>>
  **/
-@FeignClient(name = "product‐center")
+@FeignClient(name = "productcenter")
 public interface ProductCenterFeignApi {
     /**
      * 声明式接口,远程调用http://product-center/selectProductInfoById/{productNo}

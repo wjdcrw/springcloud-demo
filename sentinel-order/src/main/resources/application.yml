@@ -26,9 +26,15 @@ spring:
         server-addr: 39.107.45.29:8848
         #namespace: bc7613d2-2e22-4292-a748-48b78170f14c  #指定namespace的id
   application:
-    name: ordercenter
+    name: order-center
+  main:
+    allow-bean-definition-overriding: true
 server:
   port: 8081
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 
