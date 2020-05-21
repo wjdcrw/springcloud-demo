@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.UUID;
 
 /**
- * Created by smlz on 2019/11/17.
+ * 流控策略
  */
 @RestController
 @Slf4j
@@ -27,6 +27,9 @@ public class OrderInfoController {
 
     @Autowired
     private OrderInfoMapper orderInfoMapper;
+
+    @Autowired
+    private OrderServiceImpl orderServiceImpl;
 
 
     @RequestMapping("/selectOrderInfoById/{orderNo}")
@@ -66,6 +69,11 @@ public class OrderInfoController {
         return orderInfoMapper.selectOrderInfoById(orderNo);
     }
 
+    /**
+     * @RequestParam注解用于获取路径上的参数如 /getOrderById?orderNo=1
+     * @param orderNo
+     * @return
+     */
     @RequestMapping("/getOrderById")
     public Object getOrderById(@RequestParam String orderNo) {
         log.info("orderNo:{}","执行查询操作");
@@ -86,6 +94,17 @@ public class OrderInfoController {
         return UUID.randomUUID().toString();
     }
 
+    @RequestMapping("/findAll")
+    public String findAll() throws InterruptedException {
+        orderServiceImpl.common();
+        return "findAll";
+    }
+
+    @RequestMapping("/findAllByCondtion")
+    public String findAllByCondtion() {
+        orderServiceImpl.common();
+        return "findAllByCondition";
+    }
 
     @RequestMapping("/test")
     public String test() {

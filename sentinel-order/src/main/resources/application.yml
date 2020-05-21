@@ -25,6 +25,10 @@ spring:
       discovery:
         server-addr: 39.107.45.29:8848
         #namespace: bc7613d2-2e22-4292-a748-48b78170f14c  #指定namespace的id
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+
   application:
     name: order-center
   main:
