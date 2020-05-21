@@ -28,6 +28,8 @@ spring:
     sentinel:
       transport:
         dashboard: localhost:8080
+      filter:
+        enabled: false  #关闭Spring mvc的端点保护
 
   application:
     name: order-center
