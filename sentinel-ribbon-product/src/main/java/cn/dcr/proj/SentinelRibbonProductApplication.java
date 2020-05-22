@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FeignApiApplication {
+public class SentinelRibbonProductApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FeignApiApplication.class, args);
+        SpringApplication.run(SentinelRibbonProductApplication.class, args);
     }
 
 }

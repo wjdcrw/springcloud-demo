@@ -27,6 +27,10 @@
     <module>sentinel-helloworld</module>
     <module>sentinel-order</module>
     <module>sentinel-product</module>
+    <module>sentinel-ribbon-order</module>
+    <module>sentinel-ribbon-product</module>
+    <module>sentinel-feign-order</module>
+    <module>sentinel-feign-product</module>
   </modules>
   <packaging>pom</packaging>
 

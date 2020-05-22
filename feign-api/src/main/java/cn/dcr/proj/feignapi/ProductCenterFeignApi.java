@@ -1,4 +1,4 @@
-package cn.dcr.proj;
+package cn.dcr.proj.feignapi;
 
 import cn.dcr.proj.entity.ProductInfo;
 import feign.Param;

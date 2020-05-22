@@ -1,6 +1,6 @@
 package cn.dcr.proj.controller;
 
-import cn.dcr.proj.ProductCenterFeignApi;
+import cn.dcr.proj.feignapi.ProductCenterFeignApi;
 import cn.dcr.proj.entity.ProductInfo;
 import cn.dcr.proj.mapper.ProductInfoMapper;
 import lombok.extern.slf4j.Slf4j;

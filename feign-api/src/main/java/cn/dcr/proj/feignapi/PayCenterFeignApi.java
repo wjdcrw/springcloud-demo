@@ -1,4 +1,4 @@
-package cn.dcr.proj;
+package cn.dcr.proj.feignapi;
 
 import cn.dcr.proj.entity.PayInfo;
 import org.springframework.cloud.openfeign.FeignClient;

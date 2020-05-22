@@ -1,10 +1,9 @@
 package cn.dcr.proj.controller;
 
-import cn.dcr.proj.feignapi.PayCenterFeignApi;
-import cn.dcr.proj.feignapi.ProductCenterFeignApi;
 import cn.dcr.proj.entity.OrderInfo;
-import cn.dcr.proj.entity.PayInfo;
 import cn.dcr.proj.entity.ProductInfo;
+import cn.dcr.proj.feignapi.ProductCenterFeignApiWithSentinel;
+import cn.dcr.proj.handler.ProductCenterFeignApiWithSentinelFallback;
 import cn.dcr.proj.mapper.OrderInfoMapper;
 import cn.dcr.proj.vo.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,29 +14,32 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Author dcr
  * @Description
- * @Date 2020/5/14 14:49
+ * @Date 2020/5/22 11:21
  * @Param []
  * @return java.util.List<java.util.Map < java.lang.String, java.lang.Object>>
  **/
 @RestController
 public class OrderInfoController {
     @Autowired
-    ProductCenterFeignApi productCenterFeignApi;
+    private ProductCenterFeignApiWithSentinel productCenterFeignApiWithSentinel;
+
     @Autowired
-    PayCenterFeignApi payCenterFeignApi;
-    @Autowired
-    OrderInfoMapper orderInfoMapper;
+    private OrderInfoMapper orderInfoMapper;
 
     @RequestMapping("/selectOrderInfoById/{orderNo}")
-    public Object selectOrderInfoById(@PathVariable("orderNo") String orderNo){
+    public Object selectOrderInfoById(@PathVariable("orderNo") String orderNo) {
+
         OrderInfo orderInfo = orderInfoMapper.selectOrderInfoById(orderNo);
-        if(null==orderInfo){
+        if(null == orderInfo) {
             return "根据orderNo:"+orderNo+"查询没有该订单";
         }
-        ProductInfo productInfo = productCenterFeignApi.selectProductInfoById(orderNo);
-        if(null==productInfo){
+
+        ProductInfo productInfo = productCenterFeignApiWithSentinel.selectProductInfoById(orderNo);
+
+        if(productInfo == null) {
             return "没有对应的商品";
         }
+
         OrderVo orderVo = new OrderVo();
         orderVo.setOrderNo(orderInfo.getOrderNo());
         orderVo.setUserName(orderInfo.getUserName());
@@ -46,15 +48,4 @@ public class OrderInfoController {
 
         return orderVo;
     }
-
-    @RequestMapping("/testFeignInterceptor")
-    public String testFeignInterceptor() {
-        return productCenterFeignApi.getToken4Header("666");
-    }
-
-    @RequestMapping("/getPayInfoByOrderNo/{orderNo}")
-    public PayInfo selectPayInfoByOrderNo(@PathVariable("orderNo") String orderNo) {
-        return payCenterFeignApi.selectPayInfoByOrderNo(orderNo);
-    }
-
 }
