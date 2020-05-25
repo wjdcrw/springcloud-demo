@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by smlz on 2019/11/28.
  */
-@Component
+//@Component
 public class ProductCenterFeignApiWithSentinelFallback implements ProductCenterFeignApiWithSentinel {
     @Override
     public ProductInfo selectProductInfoById(String productNo) {
@@ -17,4 +17,6 @@ public class ProductCenterFeignApiWithSentinelFallback implements ProductCenterF
         productInfo.setProductName("默认商品");
         return productInfo;
     }
+
+
 }

@@ -1,6 +1,8 @@
 package cn.dcr.proj.feignapi;
 
 import cn.dcr.proj.entity.ProductInfo;
+import cn.dcr.proj.handler.ProductCenterFeignApiWithSentinelFallback;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
-/*
-@FeignClient(name = "product-center",fallback = ProductCenterFeignApiWithSentinelFallback.class)
-*/
+//@FeignClient(name = "product-center",fallback = ProductCenterFeignApiWithSentinelFallback.class)
 //@FeignClient(name = "product-center",fallbackFactory = ProductCenterFeignApiWithSentinelFallback.class)
+//@FeignClient(name = "product-center")
 public interface ProductCenterFeignApiWithSentinel {
 
     /**
